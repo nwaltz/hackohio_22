@@ -15,7 +15,7 @@ export default function FindPartner() {
                 <FindPartnerCard
                   button={
                     <button
-                      class="btn btn-lg btn-dark mb-3"
+                      className="btn btn-lg btn-dark mb-3"
                       onClick={sendWalkRequest}
                     >
                       Send Walk Request

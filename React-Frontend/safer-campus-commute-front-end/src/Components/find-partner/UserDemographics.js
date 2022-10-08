@@ -5,9 +5,9 @@ export default function UserDemographics() {
   };
   return (
     <>
-      {Object.keys(tmp).map((demographic) => {
+      {Object.keys(tmp).map((demographic, i) => {
         return (
-          <div>
+          <div key={i}>
             {demographic}: {tmp[demographic]}
           </div>
         );
