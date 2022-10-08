@@ -25,6 +25,17 @@ def add_user_profile():
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
+@app.route('/check_user_login')
+def check_user_profile():
+    if valid_login('koenig.485', all_users):
+        print("True")
+        #return True
+    else:
+        print("False")
+        #return False
+    # return redirect(Home Screen)
+    return 'Redirect to Home Screen'
+
 @app.route('/find_user_profile')
 def find_user_profile():
     user_profile = get_profile('koenig.485', all_users)

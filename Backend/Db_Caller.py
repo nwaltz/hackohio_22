@@ -12,6 +12,13 @@ def add_user(profile, users_table):
                                 'Phone Number' : profile.phone_number,
                                 'Profile Picture' : profile.picture})
 
+def valid_login(dot_number, users_table):
+    try:
+        users_table.find({'Dot Number' : dot_number})[0].values()
+        return True
+    except IndexError:
+        return False
+
 def get_profile(dot_number, users_table):
     profile_items = list(users_table.find({'Dot Number' : dot_number})[0].values())
     user_profile = Profile(profile_items[1],
