@@ -44,7 +44,7 @@ function Register(){
                     name="buckID"
                     placeholder="BuckID link"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>
@@ -58,7 +58,7 @@ function Register(){
                     name="name"
                     placeholder="Full Name"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>
@@ -72,7 +72,7 @@ function Register(){
                     name="age"
                     placeholder="Age"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>
@@ -86,7 +86,7 @@ function Register(){
                     name="gender"
                     placeholder="Gender"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>
@@ -100,7 +100,7 @@ function Register(){
                     name="nameNumber"
                     placeholder="Name.#"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>
@@ -114,7 +114,7 @@ function Register(){
                     name="password"
                     placeholder="Password"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>
@@ -128,7 +128,7 @@ function Register(){
                     name="phone"
                     placeholder="614-123-4567"
                     onChange={onFormEntry}
-                    required="true"
+                    required={true}
                     />
                 </Form.Group>
             </Col>

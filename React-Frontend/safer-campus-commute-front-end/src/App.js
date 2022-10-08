@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './Components/Home';
 import Profile from './Components/Profile';
 import Register from './Components/Registration';
-import Map from "./Components/map";
+import Login from "./Components/Login";
+//import Map from "./Components/map";
 
 function App() {
   return <>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </Router>
   </>
