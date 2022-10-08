@@ -1,0 +1,77 @@
+header {
+  height: 50px;
+  width: 100vw;
+  background-color: #333333;
+}
+button.btn {
+  padding: 1px 6px;
+}
+.navbar {
+  height: inherit;
+  margin: 0 5% 0 0;
+  float: right;
+}
+.nav-item {
+  height: 50px;
+}
+.navbar h5 {
+  line-height: 35px;
+  vertical-align: middle;
+  color: #c4c3c3;
+}
+.zj-logo {
+  position: absolute;
+  height: 150px;
+  top: -25%;
+  left: 3%;
+}
+#download-icon {
+  height: 30px;
+  width: 30px;
+}
+button.three-bar-container {
+  width: 45px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #aeaeae;
+  border: 2px solid black;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+button.three-bar-container:hover {
+  background-color: #aeaeae;
+  border: 2px solid black;
+}
+button > em.custom-fa-3bar {
+  font-size: 1.5rem;
+  line-height: 30px;
+}
+.offcanvas.offcanvas-top {
+  height: fit-content;
+  width: 100%;
+  border-radius: 5px;
+}
+.center {
+  margin: auto;
+  text-align: center;
+}
+/*3 line nav bar*/
+@media only screen and (max-width: 768px) {
+  button.three-bar-container {
+    display: block; /*show 3 line menu*/
+  }
+  .offcanvas-header {
+    margin: 15px;
+  }
+  .nav-item {
+    width: 90vw;
+    margin: 15px auto;
+    border-color: transparent;
+    /* background-color: transparent; */
+  }
+  .nav-item h5 {
+    color: #333333;
+  }
+}
