@@ -7,7 +7,7 @@ import buckid from "../../images/buckid-card-male-with-buckid-original.jpg";
 export default function FindPartnerCard({ button }) {
   return (
     <>
-      <div className="container text-center bg-light rounded p-3 w-75">
+      <div className="shadow-lg container text-center bg-light rounded p-3 w-75">
         <UserInfo />
         <div className="row">
           <div className="col">
