@@ -11,6 +11,7 @@ import FindPartner from "./Components/FindPartner";
 import YourRequest from "./Components/YourRequest";
 import WalkRequest from "./Components/WalkRequest";
 import NavBar from "./Components/navbar/NavBar";
+import Matches from "./Components/Matches";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/find-partner" element={<FindPartner />} />
             <Route path="/your-request" element={<YourRequest />} />
             <Route path="/walk-request" element={<WalkRequest />} />
+            <Route path="/matches" element={<Matches />} />
           </Routes>
         </Router>
       </div>

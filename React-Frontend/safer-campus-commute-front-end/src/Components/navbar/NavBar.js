@@ -8,7 +8,7 @@ export default function NavBar() {
     { href: "/find-partner", title: "Find Partner" },
     { href: "/your-request", title: "Your Requests" },
     { href: "/walk-request", title: "Walk Requests" },
-    { href: "#", title: "Matches" },
+    { href: "/matches", title: "Matches" },
     { href: "/profile", title: "Profile" },
   ];
   return (
