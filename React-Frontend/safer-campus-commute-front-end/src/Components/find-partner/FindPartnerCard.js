@@ -2,14 +2,14 @@ import MapBoxMap from "../maps/MapBoxMap";
 import CustomCollapse from "./CustomCollapse";
 import UserInfo from "./UserInfo";
 
-import "./userinfo.css";
+import "./findpartner.css";
 
 import buckid from "../../images/buckid-card-male-with-buckid-original.jpg";
 
 export default function FindPartnerCard({ button }) {
   return (
     <>
-      <div className="container w-75 text-center bg-light rounded p-3">
+      <div className="container text-center bg-light rounded p-3 w-75">
         <UserInfo />
         <div className="row">
           <div className="col">

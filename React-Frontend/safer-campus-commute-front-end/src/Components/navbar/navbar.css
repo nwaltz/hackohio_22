@@ -3,7 +3,7 @@ header {
   width: 100vw;
   background-color: #333333;
 }
-button.btn {
+button.three-bar-container.btn {
   padding: 1px 6px;
 }
 .navbar {
