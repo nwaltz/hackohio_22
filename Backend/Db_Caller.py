@@ -23,10 +23,26 @@ def get_profile(dot_number, users_table):
                             profile_items[7])
     return user_profile
 
-def get_all_dot_numbers(users_table):
+def get_all_usernames(users_table):
     dot_nums = []
-    for dot_number_object in users_table.find({}, {"Dot Number" : True}):
+    for dot_number_object in users_table.find({}, {'Dot Number' : True}):
         for i, dot_number in enumerate(dot_number_object.values()):
             if i % 2 == 1:
                 dot_nums.append(str(dot_number))
     return dot_nums
+
+def get_all_routes(routes_table):
+    dot_numbers = []
+    locations = []
+    for route_object in routes_table.find():
+        route_obj = []
+        for i, route in enumerate(route_object.values()):
+            if i % 4 != 0:
+                route_obj.append(route)
+        dot_numbers.append(route_obj[0])
+        locations.append((route_obj[1], route_obj[2]))
+        
+    return dot_numbers, locations
+
+def route_add(route, users_table):
+    users_table.insert_one({'route_username': route.username, 'start': route.start, 'end': route.end})
