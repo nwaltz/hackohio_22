@@ -2,8 +2,6 @@ import MapBoxMap from "../maps/MapBoxMap";
 import CustomCollapse from "./CustomCollapse";
 import UserInfo from "./UserInfo";
 
-import "./findpartner.css";
-
 import buckid from "../../images/buckid-card-male-with-buckid-original.jpg";
 
 export default function FindPartnerCard({ button }) {

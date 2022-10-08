@@ -20,7 +20,6 @@ export default function NavBar() {
             <div className="collapse navbar-collapse">
               <div className="navbar-nav me-auto mb-2 mb-lg-0">
                 {paths.map((element) => {
-                  console.log(element);
                   return (
                     <NavBarItem
                       href={element["href"]}
