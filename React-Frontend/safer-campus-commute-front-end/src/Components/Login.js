@@ -36,7 +36,7 @@ function Login() {
         navigate("/register");
     }
     return <>
-        <div>
+        <div className="container w-50 text-center bg-light rounded p-3">
             <Form onSubmit={handleSubmit}>
                 <h1>Login - All Fields Required</h1>
 
@@ -50,6 +50,7 @@ function Login() {
                             onChange={onFormEntry}
                             required={true}
                         />
+                        
                     </Form.Group>
 
                     <Form.Group>
