@@ -6,17 +6,14 @@ import "./userinfo.css";
 
 import buckid from "../../images/buckid-card-male-with-buckid-original.jpg";
 
-export default function FindPartnerCard() {
-  const sendWalkRequest = () => {};
+export default function FindPartnerCard({ button }) {
   return (
     <>
       <div className="container w-75 text-center bg-light rounded p-3">
         <UserInfo />
         <div className="row">
           <div className="col">
-            <button class="btn btn-lg btn-dark mb-3" onClick={sendWalkRequest}>
-              Send Walk Request
-            </button>
+            {button}
             <CustomCollapse
               description={"Show BuckID"}
               element={
