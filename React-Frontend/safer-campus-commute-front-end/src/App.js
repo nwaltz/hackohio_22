@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //components
 import Home from "./Components/home";
-import Map from "./Components/map";
+import FindPartnerCard from "./Components/find-partner/FindPartnerCard";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>
-      <Map />
+      <FindPartnerCard />
     </>
   );
 }
