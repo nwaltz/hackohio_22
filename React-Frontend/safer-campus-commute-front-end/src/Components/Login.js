@@ -38,16 +38,10 @@ function Login() {
     <>
       <div className="container w-50 text-center bg-light rounded p-3 g-3">
         <Form onSubmit={handleSubmit} className="row g-3 px-5 py-3">
-          <h1>Login</h1>
-          <Col className="col-12">
-            <Field type={"text"} name={"name.#"} onChange={onFormEntry} />
-          </Col>
-          <Col className="col-12">
-            <Field type={"password"} name={"password"} onChange={onFormEntry} />
-          </Col>
-          <Col className="col-12">
-            <button className="col-4 btn btn-primary">Login</button>
-          </Col>
+          <h1 className="my-5">Login</h1>
+          <Field type={"text"} name={"name.#"} onChange={onFormEntry} />
+          <Field type={"password"} name={"password"} onChange={onFormEntry} />
+          <button className="col-4 btn btn-primary">Login</button>
           <Col className="col-12">
             <button className="col-4 btn btn-primary" onClick={handleRegister}>
               Register
