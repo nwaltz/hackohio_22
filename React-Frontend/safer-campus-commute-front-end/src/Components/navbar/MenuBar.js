@@ -13,7 +13,7 @@ export default function MenuBar() {
     <>
       <Button
         type="button"
-        // variant="outline-dark"
+        variant="outline-dark"
         onClick={handleShow}
         className="three-bar-container"
       >
