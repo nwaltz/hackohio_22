@@ -1,0 +1,5 @@
+Flask==2.2.2
+Flask_PyMongo==2.3.0
+geocoder==1.38.1
+mapbox==0.18.1
+pymongo==4.2.0
