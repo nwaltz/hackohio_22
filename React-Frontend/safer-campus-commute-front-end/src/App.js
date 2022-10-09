@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className="w-75 m-auto mt-5">
+      <div className="w-75 m-auto mt-5 p-5">
         <Router>
           <Routes>
             <Route path="/test" element={<Test />} />

@@ -44,20 +44,20 @@ export default function FindPartner() {
 
   return (
     <>
-      <div className="row align-items-center">
-        <div className="col-8">
+      <div className="row align-items-center mb-5">
+        <div className="col-9">
           <Field
             type={"text"}
-            name={"From Location (Enter Full Addrees)"}
+            name={"From Location (Enter Full Address)"}
             onFormEntry={updateFrom}
           />
           <Field
             type={"text"}
-            name={"To Location (Enter Full Addrees)"}
+            name={"To Location (Enter Full Address)"}
             onFormEntry={updateTo}
           />
         </div>
-        <div className="col-4">
+        <div className="col-3">
           <button className="btn btn-primary w-100">Go</button>
         </div>
       </div>
