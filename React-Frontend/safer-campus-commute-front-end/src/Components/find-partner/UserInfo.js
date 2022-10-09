@@ -1,8 +1,6 @@
 import UserDemographics from "./UserDemographics";
 
-import humanface from "../../images/face.jpg";
-
-export default function UserInfo() {
+export default function UserInfo({ src }) {
   return (
     <>
       <div className="row mb-1">
@@ -12,8 +10,8 @@ export default function UserInfo() {
         <div className="col-12 col-sm-12 col-md-6 ">
           <img
             className="img-fluid w-75 rounded border border-dark"
-            src={humanface}
-            alt="Photo of Buckid"
+            src={src}
+            alt="Person Face"
           />
         </div>
         <div className="col-12 col-sm-12 col-md-6">

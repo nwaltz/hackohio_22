@@ -25,7 +25,18 @@ function middlePoint(lat1, lng1, lat2, lng2) {
 }
 
 export default function FindPartner() {
-  const test = [{}, {}, {}, {}, {}, {}, {}, {}];
+  const faceImage = [
+    "../../images/face1.jpg",
+    "../../images/face2.jpg",
+    "../../images/face3.jpg",
+    "../../images/face4.jpg",
+    "../../images/face5.jpg",
+    "../../images/face6.jpg",
+    "../../images/face7.jpg",
+    "../../images/face8.jpg",
+    "../../images/face9.jpg",
+    "../../images/face10.jpg",
+  ];
   const [from, setFrom] = useState({});
   const [to, setTo] = useState({});
   const [hide, setHide] = useState(true);
@@ -86,10 +97,10 @@ export default function FindPartner() {
       [fromLon, fromLat],
       [toLon, toLat],
     ]);
-    console.log("encoding: " + polylineEncoding);
+    // console.log("encoding: " + polylineEncoding);
 
     const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/path-5+000-0.8(${polylineEncoding}),pin-l-a+9ed4bd(${fromLon},${fromLat}),pin-l-b+000(${toLon},${toLat})/${midPoint[0]},${midPoint[1]},${zoom},${bearing}/1000x400?before_layer=natural-line-label&access_token=pk.eyJ1IjoianVzdC16aiIsImEiOiJjbDkwMnJlcmwwbHI1M25vNXI4Y3Qyc25rIn0.Ep2w_2VsXfTdsbeBYikAXg`;
-    console.log(url);
+    // console.log(url);
 
     return polylineEncoding === "????" ? (
       <></>
@@ -136,11 +147,12 @@ export default function FindPartner() {
           hide
         )}`}
       >
-        {test.map((i) => {
+        {faceImage.map((src, i) => {
           return (
             <>
               <div className="row mb-5">
                 <FindPartnerCard
+                  src={src}
                   button={
                     <button
                       className="btn btn-lg btn-dark mb-3"
