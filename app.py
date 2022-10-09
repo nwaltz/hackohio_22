@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from Backend.Profile import *
@@ -20,43 +20,47 @@ all_routes = mongo.db.all_routes
 def index():
     return 'Home Screen'
 
-@app.route('/add_user_profile')
+@app.route('/add_user_profile', methods = ['POST'])
 def add_user_profile():
-    user_profile = Profile('waltz.90', 'password', 'Nate', 'Male', '20', '4193401464', '../image_path')
+    upro = request.get_json()
+    #user_profile = Profile('waltz.90', 'password', 'Nate', 'Male', '20', '4193401464', '../image_path')
+    user_profile = Profile(upro['dot_number'], upro['password'], upro['name'], upro['age'], upro['phone'])
     add_user(user_profile, all_users)
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
-@app.route('/check_user_login')
+@app.route('/check_user_login', methods = ['POST'])
 def check_user_profile():
-    if valid_login('koenig.485', all_users):
+    username = request.get_json()
+    if valid_login(username['username'], all_users):
         print("True")
-        #return True
+        return True
     else:
         print("False")
-        #return False
+        return False
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
-@app.route('/find_user_profile')
+@app.route('/find_user_profile', methods = ['POST'])
 def find_user_profile():
-    user_profile = get_profile('koenig.485', all_users)
+    username = request.get_json()
+    user_profile = get_profile(username['username'], all_users)
     # return redirect(Home Screen)
-    return 'user_profile'
+    return jsonify(user_profile)
 
-@app.route('/get_dot_numbers')
+@app.route('/get_dot_numbers', methods = ['GET'])
 def all_dot_numbers():
     dot_numbers = get_all_usernames(all_users)
-    return 'Redirect to Home Screen'
+    return jsonify(dot_numbers)
 
-@app.route('/add_route')
+@app.route('/add_route', methods = ['POST'])
 def add_route():
-    username = 'sean.slime'
-    route = Route(username, '1917 Waldeck Ave, Columbus, OH', '50 Chittenden Ave, Columbus, OH')
+    username = request.get_json()
+    route = Route(username['username'],username['start'], username['end'])
     route_add(route, users_searching)
     return redirect(url_for('index'))
 
-@app.route('/find_match')
+@app.route('/find_match', methods = ['GET'])
 def matcher():
     valid_matches = []
     dot_numbers, locations = get_all_routes(users_searching) # locations will be [start, end]
@@ -73,22 +77,23 @@ def matcher():
                 info['person2'] = dot_numbers[j]
                 valid_matches.append(info)
     print(valid_matches)
-    return(valid_matches)
+    return(jsonify(valid_matches))
 
-@app.route('/add_match')
+@app.route('/add_match', 'POST')
 def add_match():
-    start = "178 E Frambes, Columbus, OH"
-    end = "90 W Maynard, Columbus, OH"
+    amatch = request.get_json()
+    start = amatch['start']
+    end = amatch['end']
     current_time = [time.struct_time()[3], time.struct_time()[4]]
     s, e = get_coords(start, end)
     insertion = {'time': current_time, 'start': s, 'end': e}
     all_routes.insert_one(insertion)
     return('confirm match')
 
-@app.route('/show_info')
+@app.route('/show_info', 'GET')
 def show_info():
     starts, ends = get_route_info(all_routes)
-
+    return 'display info'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080,debug=True,threaded=True)
