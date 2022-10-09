@@ -17,7 +17,10 @@ function Register() {
 
   //Update state upon form entry
   const onFormEntry = (e) => {
+    console.log(e.target.value);
+
     const { name, value } = e.target;
+    console.log(name + ", " + value);
     setUser((prevState) => ({
       ...prevState,
       [name]: value,
@@ -26,6 +29,8 @@ function Register() {
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
+    console.log("handleSubmit");
+    console.log(user);
     navigate("/profile", {
       state: { user: user },
     });
@@ -39,46 +44,58 @@ function Register() {
           <div className="container row g-3">
             <Field
               type={"url"}
-              name={"BuckID Link"}
+              name={"buckID"}
+              placeholder={"BuckID Link"}
               onFormEntry={onFormEntry}
             />
-            <Field type={"text"} name={"Full Name"} onFormEntry={onFormEntry} />
+            <Field
+              type={"text"}
+              name={"name"}
+              placeholder={"Full Name"}
+              onFormEntry={onFormEntry}
+            />
             <div className="col-4">
               <Field
                 type={"text"}
-                name={"Name.#"}
-                onFormEntry={() => onFormEntry}
+                name={"nameNumber"}
+                placeholder={"Name.#"}
+                onFormEntry={onFormEntry}
               />
             </div>
             <div className="col-4">
               <Field
                 type={"number"}
-                name={"Age"}
-                onFormEntry={() => onFormEntry}
+                name={"age"}
+                placeholder={"Age"}
+                onFormEntry={onFormEntry}
               />
             </div>
             <div className="col-4">
               <Field
                 type={"text"}
-                name={"Gender"}
-                onFormEntry={() => onFormEntry}
+                name={"gender"}
+                placeholder={"Gender"}
+                onFormEntry={onFormEntry}
               />
             </div>
 
             <Field
               type={"password"}
-              name={"Password"}
-              onFormEntry={() => onFormEntry}
+              name={"password"}
+              placeholder={"Password"}
+              onFormEntry={onFormEntry}
             />
             <Field
               type={"password"}
-              name={"Confirm Password"}
-              onFormEntry={() => onFormEntry}
+              name={"confirmpassword"}
+              placeholder={"Confirm Password"}
+              onFormEntry={onFormEntry}
             />
             <Field
               type={"tel"}
-              name={"Phone Number"}
-              onFormEntry={() => onFormEntry}
+              name={"phone"}
+              placeholder={"Phone Number"}
+              onFormEntry={onFormEntry}
               // pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"}
             />
             <Col className="col-12">

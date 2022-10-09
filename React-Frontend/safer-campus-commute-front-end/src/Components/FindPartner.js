@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FindPartnerCard from "./find-partner/FindPartnerCard";
 import Field from "./login/Field";
+import CustomMap from "./maps/CustomMap";
 
 export default function FindPartner() {
   const test = [{}, {}, {}, {}, {}, {}, {}, {}];
@@ -48,12 +49,14 @@ export default function FindPartner() {
         <div className="col-9">
           <Field
             type={"text"}
-            name={"From Location (Enter Full Address)"}
+            name={"fromLocation"}
+            placeholder={"From Location (Enter Full Address)"}
             onFormEntry={updateFrom}
           />
           <Field
             type={"text"}
-            name={"To Location (Enter Full Address)"}
+            name={"toLocation"}
+            placeholder={"To Location (Enter Full Address)"}
             onFormEntry={updateTo}
           />
         </div>
@@ -61,6 +64,7 @@ export default function FindPartner() {
           <button className="btn btn-primary w-100">Go</button>
         </div>
       </div>
+      <CustomMap />
       {test.map((i) => {
         return (
           <>

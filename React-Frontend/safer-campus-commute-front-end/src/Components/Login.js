@@ -41,10 +41,16 @@ function Login() {
       <div className="shadow container w-50 text-center bg-light rounded p-3 g-3">
         <Form onSubmit={handleSubmit} className="row g-3 px-5 py-3">
           <h1 className="my-5">Login</h1>
-          <Field type={"text"} name={"name.#"} onChange={() => onFormEntry} />
+          <Field
+            type={"text"}
+            name={"name.#"}
+            placeholder={"name.#"}
+            onChange={() => onFormEntry}
+          />
           <Field
             type={"password"}
             name={"password"}
+            placeholder={"password"}
             onChange={() => onFormEntry}
           />
           <Col className="col-12">
@@ -64,10 +70,9 @@ function Login() {
 function verifyLogin(login) {
   console.log("Info passed: " + login);
   try {
-    const value = axios.get(`//localhost:5000`)
-    .then(res => {
-        console.log("database call: " + res.data);
-    })
+    const value = axios.get(`//localhost:5000`).then((res) => {
+      console.log("database call: " + res.data);
+    });
     value = true;
     return value;
   } catch (error) {
