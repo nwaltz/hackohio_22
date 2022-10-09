@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Map, Marker } from "react-map-gl";
 
+import "./custommap.css";
+
 export default function CustomMap() {
   // initial latitude, longitude, and zoom of the map
   const mapContainer = useRef(null);
@@ -19,10 +21,10 @@ export default function CustomMap() {
 
   return (
     <>
-      <div className="w-100 align-middle">
+      <div className="align-middle">
         <Map
           initialViewState={viewport}
-          style={{ width: 600, height: 400 }}
+          style={{ width: "100%", height: 400 }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           mapboxAccessToken={mapboxApiKey}
           onRender={(event) => event.target.resize()}

@@ -1,0 +1,12 @@
+.mapboxgl-control-container {
+  visibility: hidden;
+  display: none;
+}
+
+.mapboxgl-marker.mapboxgl-marker-anchor-center {
+  width: 30px;
+}
+
+.mapboxgl-map {
+  overflow: hidden; /* fixes bug where marker would be rendered outside of map */
+}
