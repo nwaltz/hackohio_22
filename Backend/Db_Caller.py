@@ -27,13 +27,15 @@ def valid_login(dot_number, password, users_table):
 
 def get_profile(dot_number, users_table):
     profile_items = list(users_table.find({'Dot Number' : dot_number})[0].values())
-    user_profile = Profile(profile_items[1],
-                            profile_items[2],
-                            profile_items[3],
-                            profile_items[4],
-                            profile_items[5],
-                            profile_items[6],
-                            profile_items[7])
+    user_profile = {"age":profile_items[4], "dot_number":profile_items[1], "gender":profile_items[5], "name":profile_items[3], "number_of_walks":profile_items[7], "password":profile_items[2], "phone_number":profile_items[6]}
+    
+    # user_profile = Profile(profile_items[1],
+    #                         profile_items[2],
+    #                         profile_items[3],
+    #                         profile_items[4],
+    #                         profile_items[5],
+    #                         profile_items[6],
+    #                         profile_items[7])
     return user_profile
 
 def get_all_usernames(users_table):

@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -43,13 +44,15 @@ def check_user_login():
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
-@app.route('/find_user_profile', methods = ['GET'])
+@app.route('/find_user_profile', methods = ['POST'])
 def find_user_profile():
     username = request.get_json()
     user_profile = get_profile(username['username'], all_users)
     try:
-        user_profile.password
-        return user_profile
+        user_profile['password']
+        return jsonify(user_profile)
+        #u = user_profile
+        #return "" + u.age + "," + u.dot_number + "," + u.gender + "," + u.name + "," + u.password + "," + u.phone_number
     except:
         return 400
 
