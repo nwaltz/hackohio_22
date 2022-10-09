@@ -79,7 +79,7 @@ def matcher():
     print(valid_matches)
     return(jsonify(valid_matches))
 
-@app.route('/add_match', 'POST')
+@app.route('/add_match', methods = ['POST'])
 def add_match():
     amatch = request.get_json()
     start = amatch['start']
@@ -90,7 +90,7 @@ def add_match():
     all_routes.insert_one(insertion)
     return('confirm match')
 
-@app.route('/show_info', 'GET')
+@app.route('/show_info', methods = ['GET'])
 def show_info():
     starts, ends = get_route_info(all_routes)
     return 'display info'
