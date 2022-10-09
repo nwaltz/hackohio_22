@@ -12,6 +12,7 @@ import YourRequest from "./Components/YourRequest";
 import WalkRequest from "./Components/WalkRequest";
 import NavBar from "./Components/navbar/NavBar";
 import Matches from "./Components/Matches";
+import Test from "./Components/Test";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <div className="w-75 m-auto mt-5">
         <Router>
           <Routes>
+            <Route path="/test" element={<Test/>}/>
             <Route path="/" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />
