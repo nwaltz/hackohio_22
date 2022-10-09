@@ -20,10 +20,7 @@ function Register(props) {
 
   //Update state upon form entry
   const onFormEntry = (e) => {
-    console.log(e.target.value);
-
     const { name, value } = e.target;
-    console.log(name + ", " + value);
     setUser((prevState) => ({
       ...prevState,
       [name]: value,
@@ -31,29 +28,20 @@ function Register(props) {
   };
 
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    try {
-      let res = await axios({
-        url: flask,
-        method: "post",
-        timeout: 8000,
-        heders: {
-          dot_number: user.nameNumber,
-          password: user.password,
-          name: user.name,
-          age: user.age,
-          gender: user.gender,
-          phone: user.phone,
-        }
-      });
-
-      if (res.status == 200) {
-        navigate("/profile", { state: { user: user } });
-      }
-      return res.status;
-    } catch (error) {
-      navigate("/register");
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post("//localhost:5000/add_user_profile", {
+      dot_number: user.nameNumber,
+      password: user.password,
+      name: user.name,
+      age: user.age,
+      gender: user.gender,
+      phone: user.phone,
+    }).then((res) => {
+      navigate("/profile", { state: { user: user } });
+    }).catch((err) => {
+      navigate("/register",);
+    });
 
   };
 

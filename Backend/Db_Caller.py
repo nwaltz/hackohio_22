@@ -3,7 +3,7 @@ from Backend.Profile import *
 def add_user(profile, users_table):
     try:
         users_table.find({'Dot Number' : profile.dot_number})[0].values()
-        return False
+        return 400
     except IndexError:
         users_table.insert_one({'Dot Number' : profile.dot_number,
                                 'Password' : profile.password,
@@ -12,7 +12,7 @@ def add_user(profile, users_table):
                                 'Age' : profile.age,
                                 'Phone Number' : profile.phone_number,
                                 'Profile Picture' : profile.picture})
-        return True
+        return "200"
 
 def valid_login(dot_number, password, users_table):
     try:

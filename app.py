@@ -25,31 +25,33 @@ def add_user_profile():
     upro = request.get_json()
     #user_profile = Profile('waltz.90', 'password', 'Nate', 'Male', '20', '4193401464', '../image_path')
     user_profile = Profile(upro['dot_number'], upro['password'], upro['name'], upro['age'], upro['gender'], upro['phone'])
-    if add_user(user_profile, all_users):
-        return 200
-    else:
-        return 400
+    res = add_user(user_profile, all_users)
+
+    return res
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
 @app.route('/check_user_login', methods = ['POST'])
-def check_user_profile():
+def check_user_login():
     username = request.get_json()
-    if valid_login(username['username'], all_users):
+    if valid_login(username['username'], username['password'], all_users):
         print("True")
-        return True
+        return "200"
     else:
         print("False")
-        return False
+        return 400
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
-@app.route('/find_user_profile', methods = ['POST'])
+@app.route('/find_user_profile', methods = ['GET'])
 def find_user_profile():
     username = request.get_json()
     user_profile = get_profile(username['username'], all_users)
-    # return redirect(Home Screen)
-    return jsonify(user_profile)
+    try:
+        user_profile.password
+        return user_profile
+    except:
+        return 400
 
 @app.route('/get_dot_numbers', methods = ['GET'])
 def all_dot_numbers():
