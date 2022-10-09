@@ -1,8 +1,8 @@
-import MapBoxMap from "../maps/MapBoxMap";
 import CustomCollapse from "./CustomCollapse";
 import UserInfo from "./UserInfo";
 
 import buckid from "../../images/buckid-card-male-with-buckid-original.jpg";
+import CustomMap from "../maps/CustomMap";
 
 export default function FindPartnerCard({ button }) {
   return (
@@ -25,7 +25,7 @@ export default function FindPartnerCard({ button }) {
 
             <CustomCollapse
               description={"Show Location"}
-              element={<MapBoxMap />}
+              element={<CustomMap />}
             />
           </div>
         </div>
