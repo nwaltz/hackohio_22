@@ -44,18 +44,22 @@ export default function FindPartner() {
 
   return (
     <>
-      <div>
-        <Field
-          type={"text"}
-          name={"From Location (Enter Full Addrees)"}
-          onFormEntry={updateFrom}
-        />
-        <Field
-          type={"text"}
-          name={"To Location (Enter Full Addrees)"}
-          onFormEntry={updateTo}
-        />
-        <button className="btn btn-primary">Go</button>
+      <div className="row align-items-center">
+        <div className="col-8">
+          <Field
+            type={"text"}
+            name={"From Location (Enter Full Addrees)"}
+            onFormEntry={updateFrom}
+          />
+          <Field
+            type={"text"}
+            name={"To Location (Enter Full Addrees)"}
+            onFormEntry={updateTo}
+          />
+        </div>
+        <div className="col-4">
+          <button className="btn btn-primary w-100">Go</button>
+        </div>
       </div>
       {test.map((i) => {
         return (

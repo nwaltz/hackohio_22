@@ -24,7 +24,6 @@ function Register() {
     }));
   };
 
-  //
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     navigate("/profile", {
@@ -41,49 +40,45 @@ function Register() {
             <Field
               type={"url"}
               name={"BuckID Link"}
-              onChange={() => onFormEntry}
+              onFormEntry={onFormEntry}
             />
-            <Field
-              type={"text"}
-              name={"Full Name"}
-              onChange={() => onFormEntry}
-            />
+            <Field type={"text"} name={"Full Name"} onFormEntry={onFormEntry} />
             <div className="col-4">
               <Field
                 type={"text"}
                 name={"Name.#"}
-                onChange={() => onFormEntry}
+                onFormEntry={() => onFormEntry}
               />
             </div>
             <div className="col-4">
               <Field
                 type={"number"}
                 name={"Age"}
-                onChange={() => onFormEntry}
+                onFormEntry={() => onFormEntry}
               />
             </div>
             <div className="col-4">
               <Field
                 type={"text"}
                 name={"Gender"}
-                onChange={() => onFormEntry}
+                onFormEntry={() => onFormEntry}
               />
             </div>
 
             <Field
               type={"password"}
               name={"Password"}
-              onChange={() => onFormEntry}
+              onFormEntry={() => onFormEntry}
             />
             <Field
               type={"password"}
               name={"Confirm Password"}
-              onChange={() => onFormEntry}
+              onFormEntry={() => onFormEntry}
             />
             <Field
               type={"tel"}
               name={"Phone Number"}
-              onChange={() => onFormEntry}
+              onFormEntry={() => onFormEntry}
               // pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"}
             />
             <Col className="col-12">
