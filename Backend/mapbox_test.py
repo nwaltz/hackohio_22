@@ -112,3 +112,11 @@ def get_distance(start, end):
 
 #print(get_distance("178 E Frambes, Columbus, OH", "90 W Maynard"))
 #get_fastest_route('','','','')
+
+def get_coords(start, end):
+    pkey = 'pk.eyJ1IjoibndhbHR6IiwiYSI6ImNsOTAxNWM4ZjB1eWIzbnA4NHltNGJuYTEifQ.O-07ozUF6r4841jWpdXN9w'
+
+    s = geocoder.mapbox(start, key=pkey).json
+    e = geocoder.mapbox(end, key=pkey).json
+
+    return s, e

@@ -5,6 +5,7 @@ from Backend.Profile import *
 from Backend.Db_Caller import *
 from Backend.Route import *
 from Backend.mapbox_test import *
+import time
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ mongo = PyMongo(app)
 
 all_users = mongo.db.all_users
 users_searching = mongo.db.users_searching
+all_routes = mongo.db.all_routes
 
 @app.route('/')
 def index():
@@ -72,6 +74,21 @@ def matcher():
                 valid_matches.append(info)
     print(valid_matches)
     return(valid_matches)
+
+@app.route('/add_match')
+def add_match():
+    start = "178 E Frambes, Columbus, OH"
+    end = "90 W Maynard, Columbus, OH"
+    current_time = [time.struct_time()[3], time.struct_time()[4]]
+    s, e = get_coords(start, end)
+    insertion = {'time': current_time, 'start': s, 'end': e}
+    all_routes.insert_one(insertion)
+    return('confirm match')
+
+@app.route('/show_info')
+def show_info():
+    starts, ends = get_route_info(all_routes)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080,debug=True,threaded=True)
