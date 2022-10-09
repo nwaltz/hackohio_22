@@ -13,6 +13,7 @@ function Login() {
 
   //Update state upon form entry
   const onFormEntry = (e) => {
+    
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
@@ -23,14 +24,16 @@ function Login() {
   //Login and take to profile page
   const navigate = useNavigate();
   const handleSubmit = (e) => {
-    if (verifyLogin(user)) {
-      console.log();
-      navigate("/profile", {
-        state: { user: user },
-      });
-    } else {
-      navigate("/login");
-    }
+    console.log(user);
+    e.preventDefault();
+    axios.post("//localhost:5000/check_user_login", {
+      username: user.nameNumber,
+      password: user.password
+    }).then((res) => {
+      navigate("/profile", { state: { user: user } });
+    }).catch((err) => {
+      navigate("/login",);
+    });
   };
 
   const handleRegister = () => {
@@ -43,15 +46,15 @@ function Login() {
           <h1 className="my-5">Login</h1>
           <Field
             type={"text"}
-            name={"name.#"}
+            name={"nameNumber"}
             placeholder={"name.#"}
-            onChange={() => onFormEntry}
+            onFormEntry={onFormEntry}
           />
           <Field
             type={"password"}
             name={"password"}
             placeholder={"password"}
-            onChange={() => onFormEntry}
+            onFormEntry={onFormEntry}
           />
           <Col className="col-12">
             <button className="col-4 btn btn-primary">Login</button>

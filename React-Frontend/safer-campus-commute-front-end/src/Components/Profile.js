@@ -1,22 +1,31 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, {useEffect} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../style.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Badge from "react-bootstrap/Badge";
+import axios from "axios";
 
 function Profile() {
   const location = useLocation();
-  let user = [];
+  const navigate = useNavigate();
 
   try {
-    user = location.state.user;
+    let user = location.state.user;
+    console.log("pre axios");
+    const checkLogin = () => {
+      axios.get("//localhost:5000/find_user_profile", {
+        username: user.nameNumber,
+        password: user.password
+      }).then((res) => {
+        console.log(">>>>>> " + res.data);
+      }).catch((err) => {
+        navigate("/login",);
+      });
+    }
+    console.log("post axios");
     //temp REMOVE WHEN REAL TESTING
     user.buckID = "../Images/brian.1.jpg";
 
+    checkLogin();
     return (
       <>
         <div className="container w-100 text-center bg-light rounded p-3">

@@ -25,28 +25,33 @@ def add_user_profile():
     upro = request.get_json()
     #user_profile = Profile('waltz.90', 'password', 'Nate', 'Male', '20', '4193401464', '../image_path')
     user_profile = Profile(upro['dot_number'], upro['password'], upro['name'], upro['age'], upro['gender'], upro['phone'])
-    add_user(user_profile, all_users)
+    res = add_user(user_profile, all_users)
+
+    return res
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
 @app.route('/check_user_login', methods = ['POST'])
-def check_user_profile():
+def check_user_login():
     username = request.get_json()
-    if valid_login(username['username'], all_users):
+    if valid_login(username['username'], username['password'], all_users):
         print("True")
-        return True
+        return "200"
     else:
         print("False")
-        return False
+        return 400
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
-@app.route('/find_user_profile', methods = ['POST'])
+@app.route('/find_user_profile', methods = ['GET'])
 def find_user_profile():
     username = request.get_json()
     user_profile = get_profile(username['username'], all_users)
-    # return redirect(Home Screen)
-    return jsonify(user_profile)
+    try:
+        user_profile.password
+        return user_profile
+    except:
+        return 400
 
 @app.route('/get_dot_numbers', methods = ['GET'])
 def all_dot_numbers():
@@ -57,8 +62,11 @@ def all_dot_numbers():
 def add_route():
     username = request.get_json()
     route = Route(username['username'],username['start'], username['end'])
-    route_add(route, users_searching)
-    return redirect(url_for('index'))
+    try:
+        route_add(route, users_searching)
+        return 200
+    except:
+        return 400
 
 @app.route('/find_match', methods = ['GET'])
 def matcher():
@@ -69,9 +77,10 @@ def matcher():
     for i in range(1,len(dot_numbers)):
         for j in range(i):
             bet_users = get_distance(locations[i][0], locations[j][0])
-            distance = get_distance(locations[i][0], locations[i][1])
+            distance1 = get_distance(locations[i][0], locations[i][1])
+            distance2 = get_distance(locations[j][0], locations[j][1])
 
-            if distance/2 > bet_users:
+            if distance1/2 > bet_users and distance2/2 > bet_users:
                 info = get_fastest_route(locations[i][0], locations[j][0], locations[i][1], locations[j][1])
                 info['person1'] = dot_numbers[i]
                 info['person2'] = dot_numbers[j]
@@ -81,14 +90,18 @@ def matcher():
 
 @app.route('/add_match', methods = ['POST'])
 def add_match():
-    amatch = request.get_json()
-    start = amatch['start']
-    end = amatch['end']
-    current_time = [time.struct_time()[3], time.struct_time()[4]]
-    s, e = get_coords(start, end)
-    insertion = {'time': current_time, 'start': s, 'end': e}
-    all_routes.insert_one(insertion)
-    return('confirm match')
+    try:
+        amatch = request.get_json()
+        start = amatch['start']
+        end = amatch['end']
+
+        current_time = [time.struct_time()[3], time.struct_time()[4]]
+        s, e = get_coords(start, end)
+        insertion = {'time': current_time, 'start': s, 'end': e}
+        all_routes.insert_one(insertion)
+        return 200
+    except:
+        return 400
 
 @app.route('/show_info', methods = ['GET'])
 def show_info():

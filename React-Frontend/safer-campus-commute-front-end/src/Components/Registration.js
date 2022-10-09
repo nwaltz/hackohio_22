@@ -5,23 +5,22 @@ import "bootstrap/dist/css/bootstrap.css";
 import Field from "./login/Field";
 import axios from "axios";
 
-function Register() {
+function Register(props) {
+  const flask = props.url;
+
   const [user, setUser] = useState({
     buckID: "",
-    name: "Samiul Islam",
-    age: "21",
-    gender: "Male",
-    nameNumber: "islam.128",
-    password: "123",
-    phone: "6141234567",
+    name: "",
+    age: "",
+    gender: "",
+    nameNumber: "",
+    password: "",
+    phone: "",
   });
 
   //Update state upon form entry
   const onFormEntry = (e) => {
-    console.log(e.target.value);
-
     const { name, value } = e.target;
-    console.log(name + ", " + value);
     setUser((prevState) => ({
       ...prevState,
       [name]: value,
@@ -30,6 +29,7 @@ function Register() {
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios.post("//localhost:5000/add_user_profile", {
       dot_number: user.nameNumber,
       password: user.password,
@@ -37,8 +37,12 @@ function Register() {
       age: user.age,
       gender: user.gender,
       phone: user.phone,
+    }).then((res) => {
+      navigate("/profile", { state: { user: user } });
+    }).catch((err) => {
+      navigate("/register",);
     });
-    navigate("/profile", { state: { user: user } });
+
   };
 
   return (
@@ -48,7 +52,7 @@ function Register() {
           <h1 className="my-5">Register - All Fields Required</h1>
           <div className="container row g-3">
             <Field
-              type={"url"}
+              type={"text"}
               name={"buckID"}
               placeholder={"BuckID Link"}
               onFormEntry={onFormEntry}
@@ -101,7 +105,7 @@ function Register() {
               name={"phone"}
               placeholder={"Phone Number"}
               onFormEntry={onFormEntry}
-              // pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"}
+            // pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"}
             />
             <Col className="col-12">
               <button class="col-4 btn btn-primary">Register</button>
