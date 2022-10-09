@@ -31,6 +31,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register url={url} />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/find-partner" element={<FindPartner />} />
             <Route path="/your-request" element={<YourRequest />} />
             <Route path="/walk-request" element={<WalkRequest />} />
