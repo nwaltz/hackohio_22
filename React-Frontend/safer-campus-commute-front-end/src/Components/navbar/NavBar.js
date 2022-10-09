@@ -19,7 +19,7 @@ export default function NavBar() {
             {/* navbar for larger screens */}
             <div className="collapse navbar-collapse">
               <div className="navbar-nav me-auto mb-2 mb-lg-0">
-                {paths.map((element) => {
+                {paths.map((element, index) => {
                   return (
                     <NavBarItem
                       href={element["href"]}

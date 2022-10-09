@@ -14,6 +14,8 @@ import Matches from "./Components/Matches";
 import Test from "./Components/Test";
 
 function App() {
+  const url = "//localhost:5000/add_user_profile";
+
   return (
     <>
       <NavBar />
@@ -23,7 +25,7 @@ function App() {
             <Route path="/test" element={<Test />} />
             <Route path="/" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register url={url}/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/find-partner" element={<FindPartner />} />
             <Route path="/your-request" element={<YourRequest />} />
