@@ -1,33 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Test() {
 
     // new line start
-    const [data, setData] = useState([])
+    const [post, setPost] = React.useState(null);
 
-    function getData() {
-        axios({
-            method: "GET",
-            url: "/",
-        })
-            .then((response) => {
-                const res = response.data
-                setData(({
-                    data: res
-                }))
-            }).catch((error) => {
-                if (error.response) {
-                    console.log(error.response)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                }
-            })
+    React.useEffect(() => {
+      axios.get("//localhost:5000").then((response) => {
+        setPost(response.data);
+      });
+    }, []);
+  
+    if(!post){
+        return <>
+        <h1>empty test</h1>
+        </>
+    }
+
+    function clickHandle(){
+        console.log("hi");
     }
 
     return <>
         <h1>Click button</h1>
-        <button onClick={getData}>Open console</button>
+        <button onClick={()=>clickHandle()}>{post}</button>
     </>
 }
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import Field from "./login/Field";
+import axios from "axios";
 
 function Login() {
   const [user, setUser] = useState({
@@ -23,6 +24,7 @@ function Login() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     if (verifyLogin(user)) {
+      console.log();
       navigate("/profile", {
         state: { user: user },
       });
@@ -60,8 +62,17 @@ function Login() {
 }
 
 function verifyLogin(login) {
-  return true;
-  //make database call to verify login
+  console.log("Info passed: " + login);
+  try {
+    const value = axios.get(`//localhost:5000`)
+    .then(res => {
+        console.log("database call: " + res.data);
+    })
+    value = true;
+    return value;
+  } catch (error) {
+    return false;
+  }
 }
 
 export default Login;
