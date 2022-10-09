@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import "./mapboxmap.css";
 mapboxgl.accessToken =
   "pk.eyJ1IjoianVzdC16aiIsImEiOiJjbDkwMnJlcmwwbHI1M25vNXI4Y3Qyc25rIn0.Ep2w_2VsXfTdsbeBYikAXg";
 
@@ -19,10 +20,19 @@ export default function MapBoxMap() {
       center: [lng, lat],
       zoom: zoom,
     });
+
+    const marker = new mapboxgl.Marker({ anchor: "center", draggable: true })
+      .setLngLat([-83.02271, 39.999387])
+      .addTo(map.current); // add the marker to the map
+
+    map.current.resize();
   });
+
   return (
     <>
-      <div ref={mapContainer} className="map-container" />
+      <div className="w-100">
+        <div ref={mapContainer} className="map-container" />
+      </div>
     </>
   );
 }
