@@ -4,7 +4,6 @@ import "../style.css";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-
 let data = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 function Profile() {
@@ -13,35 +12,38 @@ function Profile() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.getElementById("navBarHeader").style.display = "block";
+  });
 
   try {
     let user = location.state.user;
     console.log("pre axios");
 
     axios({
-      method: 'post',
+      method: "post",
       url: "//localhost:5000/find_user_profile",
       data: {
-      username: user.nameNumber,
-      password: user.password
+        username: user.nameNumber,
+        password: user.password,
       },
       headers: {
-        'Content-Type': 'application/json'
-      }
-      
-    }).then((res) => {
-      console.log(res.data);
-      data = res.data;
-    }).catch((err) => {
-      console.log(err.response.data);
-      //navigate("/login",);
-    });
-    
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((res) => {
+        data = res.data;
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        //navigate("/login",);
+      });
+
     console.log("post axios");
     //temp REMOVE WHEN REAL TESTING
     user.buckID = "../Images/brian.1.jpg";
 
-    //console.log(test)
     return (
       <>
         <div className="container w-100 text-center bg-light rounded p-3">
@@ -67,7 +69,7 @@ function Profile() {
     );
   } catch (error) {
     //redirect to login page
-    navigate("/login",);
+    navigate("/login");
   }
 }
 

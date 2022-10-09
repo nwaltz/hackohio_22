@@ -42,12 +42,6 @@ function Login() {
     navigate("/register");
   };
 
-  const hideNavBar = () => {
-    const nav = document.getElementById("navBarHeader");
-    nav.style.display = "none";
-    console.log(nav);
-  };
-
   useEffect(() => {
     document.getElementById("navBarHeader").style.display = "none";
   });
