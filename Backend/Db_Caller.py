@@ -1,9 +1,11 @@
 from Backend.Profile import *
 
 def add_user(profile, users_table):
-    try:
-        users_table.find({'Dot Number' : profile.dot_number})[0].values()
-    except IndexError:
+    print(">>>Adding users")
+    existing_users = users_table.find({'Dot Number' : profile.dot_number})
+    print("finished database call")
+    if(existing_users.retrieved == 0):
+        print(">>>Not found")
         users_table.insert_one({'Dot Number' : profile.dot_number,
                                 'Password' : profile.password,
                                 'Name' : profile.name,
@@ -11,6 +13,10 @@ def add_user(profile, users_table):
                                 'Age' : profile.age,
                                 'Phone Number' : profile.phone_number,
                                 'Profile Picture' : profile.picture})
+        print(">>>Entered into database")
+
+    print(">>>Done with adding users")
+        
 
 def valid_login(dot_number, users_table):
     try:
