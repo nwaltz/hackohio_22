@@ -12,8 +12,6 @@ function Profile() {
     const location = useLocation();
     let user = [];
 
-    console.log(location.state.user);
-
     try {
         user = location.state.user;
         //temp REMOVE WHEN REAL TESTING
