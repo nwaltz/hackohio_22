@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { isValidElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import Field from "./login/Field";
+import axios from "axios";
 
 function Register() {
   const [user, setUser] = useState({
     buckID: "",
-    name: "",
-    age: "",
-    gender: "",
-    nameNumber: "",
-    password: "",
-    phone: "",
+    name: "Samiul Islam",
+    age: "21",
+    gender: "Male",
+    nameNumber: "islam.128",
+    password: "123",
+    phone: "6141234567",
   });
 
   //Update state upon form entry
@@ -29,11 +30,15 @@ function Register() {
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
-    console.log("handleSubmit");
-    console.log(user);
-    navigate("/profile", {
-      state: { user: user },
+    axios.post("//localhost:5000/add_user_profile", {
+      dot_number: user.nameNumber,
+      password: user.password,
+      name: user.name,
+      age: user.age,
+      gender: user.gender,
+      phone: user.phone,
     });
+    navigate("/profile", { state: { user: user } });
   };
 
   return (

@@ -23,8 +23,8 @@ function Test() {
     }
 
     return <>
-        <h1>Click button</h1>
-        <button onClick={()=>clickHandle()}>{post}</button>
+        <h1>{post}</h1>
+        <button onClick={()=>clickHandle()}>click me</button>
     </>
 }
 
