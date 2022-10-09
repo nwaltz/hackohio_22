@@ -14,6 +14,19 @@ export default function WalkRequest() {
     "../../images/face10.jpg",
   ];
 
+  const fakeNames = [
+    "Zheng Ji Tan",
+    "Samuil Ismail",
+    "Paul Houston",
+    "Nathan Sammy",
+    "Sam Mattern",
+    "Samuel Sam",
+    "Max Sam",
+    "Sam Prince",
+    "Adam Coos",
+    "Champion Champ",
+  ];
+
   const acceptRequest = () => {};
 
   return (
@@ -24,6 +37,7 @@ export default function WalkRequest() {
             <div className="container overflow-hidden text-center">
               <div className="row mb-5">
                 <FindPartnerCard
+                  name={fakeNames[i]}
                   src={src}
                   button={
                     <button

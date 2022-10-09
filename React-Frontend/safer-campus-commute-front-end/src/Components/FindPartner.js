@@ -37,6 +37,18 @@ export default function FindPartner() {
     "../../images/face9.jpg",
     "../../images/face10.jpg",
   ];
+  const fakeNames = [
+    "Zheng Ji Tan",
+    "Samuil Ismail",
+    "Paul Houston",
+    "Nathan Sammy",
+    "Sam Mattern",
+    "Samuel Sam",
+    "Max Sam",
+    "Sam Prince",
+    "Adam Coos",
+    "Champion Champ",
+  ];
   const [from, setFrom] = useState({});
   const [to, setTo] = useState({});
   const [hide, setHide] = useState(true);
@@ -153,6 +165,7 @@ export default function FindPartner() {
               <div className="row mb-5">
                 <FindPartnerCard
                   src={src}
+                  name={fakeNames[i]}
                   button={
                     <button
                       className="btn btn-lg btn-dark mb-3"
