@@ -51,5 +51,17 @@ def get_all_routes(routes_table):
         
     return dot_numbers, locations
 
+def get_route_info(all_routes):
+    starts = []
+    ends = []
+    for objs in all_routes.find({}, {'Dot Number' : True}):
+        temp_obj = []
+        for i, vals in enumerate(objs.values()):
+            if i % 4 != 0:
+                temp_obj.append(str(vals))
+        starts.append(temp_obj[1])
+        ends.append(temp_obj[2])
+    return starts, ends
+
 def route_add(route, users_table):
     users_table.insert_one({'route_username': route.username, 'start': route.start, 'end': route.end})
