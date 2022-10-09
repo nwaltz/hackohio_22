@@ -24,7 +24,7 @@ def index():
 def add_user_profile():
     upro = request.get_json()
     #user_profile = Profile('waltz.90', 'password', 'Nate', 'Male', '20', '4193401464', '../image_path')
-    user_profile = Profile(upro['dot_number'], upro['password'], upro['name'], upro['age'], upro['phone'])
+    user_profile = Profile(upro['dot_number'], upro['password'], upro['name'], upro['age'], upro['gender'], upro['phone'])
     add_user(user_profile, all_users)
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
