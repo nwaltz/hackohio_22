@@ -11,9 +11,10 @@ export default function NavBar() {
     { href: "/matches", title: "Matches" },
     { href: "/profile", title: "Profile" },
   ];
+
   return (
     <>
-      <header>
+      <header id="navBarHeader">
         <nav className="navbar navbar-expand-md navbar-light">
           <div className="container-fluid">
             {/* navbar for larger screens */}
@@ -22,6 +23,7 @@ export default function NavBar() {
                 {paths.map((element, index) => {
                   return (
                     <NavBarItem
+                      key={index}
                       href={element["href"]}
                       title={element["title"]}
                     />

@@ -1,4 +1,4 @@
-import React, { isValidElement, useState } from "react";
+import React, { isValidElement, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -30,20 +30,26 @@ function Register(props) {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("//localhost:5000/add_user_profile", {
-      dot_number: user.nameNumber,
-      password: user.password,
-      name: user.name,
-      age: user.age,
-      gender: user.gender,
-      phone: user.phone,
-    }).then((res) => {
-      navigate("/profile", { state: { user: user } });
-    }).catch((err) => {
-      navigate("/register",);
-    });
-
+    axios
+      .post("//localhost:5000/add_user_profile", {
+        dot_number: user.nameNumber,
+        password: user.password,
+        name: user.name,
+        age: user.age,
+        gender: user.gender,
+        phone: user.phone,
+      })
+      .then((res) => {
+        navigate("/profile", { state: { user: user } });
+      })
+      .catch((err) => {
+        navigate("/register");
+      });
   };
+
+  useEffect(() => {
+    document.getElementById("navBarHeader").style.display = "none";
+  });
 
   return (
     <>
@@ -105,7 +111,7 @@ function Register(props) {
               name={"phone"}
               placeholder={"Phone Number"}
               onFormEntry={onFormEntry}
-            // pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"}
+              // pattern={"[0-9]{3}-[0-9]{2}-[0-9]{3}"}
             />
             <Col className="col-12">
               <button class="col-4 btn btn-primary">Register</button>

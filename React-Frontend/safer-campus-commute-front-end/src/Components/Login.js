@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import Field from "./login/Field";
@@ -13,7 +13,6 @@ function Login() {
 
   //Update state upon form entry
   const onFormEntry = (e) => {
-    
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
@@ -26,19 +25,33 @@ function Login() {
   const handleSubmit = (e) => {
     console.log(user);
     e.preventDefault();
-    axios.post("//localhost:5000/check_user_login", {
-      username: user.nameNumber,
-      password: user.password
-    }).then((res) => {
-      navigate("/profile", { state: { user: user } });
-    }).catch((err) => {
-      navigate("/login",);
-    });
+    axios
+      .post("//localhost:5000/check_user_login", {
+        username: user.nameNumber,
+        password: user.password,
+      })
+      .then((res) => {
+        navigate("/profile", { state: { user: user } });
+      })
+      .catch((err) => {
+        navigate("/login");
+      });
   };
 
   const handleRegister = () => {
     navigate("/register");
   };
+
+  const hideNavBar = () => {
+    const nav = document.getElementById("navBarHeader");
+    nav.style.display = "none";
+    console.log(nav);
+  };
+
+  useEffect(() => {
+    document.getElementById("navBarHeader").style.display = "none";
+  });
+
   return (
     <>
       <div className="shadow container w-50 text-center bg-light rounded p-3 g-3">
