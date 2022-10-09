@@ -1,5 +1,5 @@
 class Profile:
-    def __init__(self, dot_number, password, name, gender, age, phone_number, picture="None"):
+    def __init__(self, dot_number, password, name, gender, age, phone_number, picture=''):
         self.dot_number = dot_number
         self.password = password
         self.name = name

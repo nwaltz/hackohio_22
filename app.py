@@ -25,7 +25,10 @@ def add_user_profile():
     upro = request.get_json()
     #user_profile = Profile('waltz.90', 'password', 'Nate', 'Male', '20', '4193401464', '../image_path')
     user_profile = Profile(upro['dot_number'], upro['password'], upro['name'], upro['age'], upro['gender'], upro['phone'])
-    add_user(user_profile, all_users)
+    if add_user(user_profile, all_users):
+        return 200
+    else:
+        return 400
     # return redirect(Home Screen)
     return 'Redirect to Home Screen'
 
@@ -82,8 +85,9 @@ def matcher():
 @app.route('/add_match', methods = ['POST'])
 def add_match():
     amatch = request.get_json()
-    start = amatch['start']
-    end = amatch['end']
+    #start = amatch['start']
+    #end = amatch['end']
+
     current_time = [time.struct_time()[3], time.struct_time()[4]]
     s, e = get_coords(start, end)
     insertion = {'time': current_time, 'start': s, 'end': e}
