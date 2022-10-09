@@ -72,9 +72,10 @@ def matcher():
     for i in range(1,len(dot_numbers)):
         for j in range(i):
             bet_users = get_distance(locations[i][0], locations[j][0])
-            distance = get_distance(locations[i][0], locations[i][1])
+            distance1 = get_distance(locations[i][0], locations[i][1])
+            distance2 = get_distance(locations[j][0], locations[j][1])
 
-            if distance/2 > bet_users:
+            if distance1/2 > bet_users and distance2/2 > bet_users:
                 info = get_fastest_route(locations[i][0], locations[j][0], locations[i][1], locations[j][1])
                 info['person1'] = dot_numbers[i]
                 info['person2'] = dot_numbers[j]
@@ -85,8 +86,8 @@ def matcher():
 @app.route('/add_match', methods = ['POST'])
 def add_match():
     amatch = request.get_json()
-    #start = amatch['start']
-    #end = amatch['end']
+    start = amatch['start']
+    end = amatch['end']
 
     current_time = [time.struct_time()[3], time.struct_time()[4]]
     s, e = get_coords(start, end)
