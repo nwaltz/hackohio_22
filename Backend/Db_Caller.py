@@ -14,11 +14,15 @@ def add_user(profile, users_table):
                                 'Profile Picture' : profile.picture})
         return True
 
-def valid_login(dot_number, users_table):
+def valid_login(dot_number, password, users_table):
     try:
-        users_table.find({'Dot Number' : dot_number})[0].values()
-        return True
+        p = list(users_table.find({'Dot Number' : dot_number})[0].values())[2]
     except IndexError:
+        return False
+
+    if p == password:
+        return True
+    else:
         return False
 
 def get_profile(dot_number, users_table):
@@ -56,7 +60,7 @@ def get_all_routes(routes_table):
 def get_route_info(all_routes):
     starts = []
     ends = []
-    for objs in all_routes.find({}, {'Dot Number' : True}):
+    for objs in all_routes.find({}, {'time' : True}):
         temp_obj = []
         for i, vals in enumerate(objs.values()):
             if i % 4 != 0:

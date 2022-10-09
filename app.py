@@ -60,8 +60,11 @@ def all_dot_numbers():
 def add_route():
     username = request.get_json()
     route = Route(username['username'],username['start'], username['end'])
-    route_add(route, users_searching)
-    return redirect(url_for('index'))
+    try:
+        route_add(route, users_searching)
+        return 200
+    except:
+        return 400
 
 @app.route('/find_match', methods = ['GET'])
 def matcher():
@@ -85,15 +88,18 @@ def matcher():
 
 @app.route('/add_match', methods = ['POST'])
 def add_match():
-    amatch = request.get_json()
-    start = amatch['start']
-    end = amatch['end']
+    try:
+        amatch = request.get_json()
+        start = amatch['start']
+        end = amatch['end']
 
-    current_time = [time.struct_time()[3], time.struct_time()[4]]
-    s, e = get_coords(start, end)
-    insertion = {'time': current_time, 'start': s, 'end': e}
-    all_routes.insert_one(insertion)
-    return('confirm match')
+        current_time = [time.struct_time()[3], time.struct_time()[4]]
+        s, e = get_coords(start, end)
+        insertion = {'time': current_time, 'start': s, 'end': e}
+        all_routes.insert_one(insertion)
+        return 200
+    except:
+        return 400
 
 @app.route('/show_info', methods = ['GET'])
 def show_info():
