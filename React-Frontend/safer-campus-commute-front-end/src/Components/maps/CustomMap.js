@@ -1,6 +1,5 @@
-import { GeolocateControl } from "mapbox-gl";
 import React, { useRef, useState } from "react";
-import ReactMapGL, { Map, Marker } from "react-map-gl";
+import { Map, Marker } from "react-map-gl";
 
 export default function CustomMap() {
   // initial latitude, longitude, and zoom of the map
