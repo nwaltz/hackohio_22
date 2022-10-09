@@ -46,7 +46,7 @@ def find_user_profile():
 
 @app.route('/get_dot_numbers')
 def all_dot_numbers():
-    dot_numbers = get_all_dot_numbers(all_users)
+    dot_numbers = get_all_usernames(all_users)
     return 'Redirect to Home Screen'
 
 @app.route('/add_route')
