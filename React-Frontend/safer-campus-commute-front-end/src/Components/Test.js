@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { renderMatches } from "react-router-dom";
 
 function Test() {
 
     try {
-        axios.get(`localhost:5000`)
+        axios.get(`//localhost:5000`)
         .then(res => {
             console.log(res.data);
         })
