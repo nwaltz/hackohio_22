@@ -4,7 +4,7 @@ import axios from "axios";
 function Test() {
 
     try {
-        axios.get(`//localhost:5000`)
+        axios.get(`//localhost:8080`)
         .then(res => {
             console.log(res.data);
         })
