@@ -8,7 +8,7 @@ export default function NavBar() {
     { href: "/find-partner", title: "Find Partner" },
     { href: "/your-request", title: "Your Requests" },
     { href: "/walk-request", title: "Walk Requests" },
-    { href: "#", title: "Matches" },
+    { href: "/matches", title: "Matches" },
     { href: "/profile", title: "Profile" },
   ];
   return (
@@ -20,7 +20,6 @@ export default function NavBar() {
             <div className="collapse navbar-collapse">
               <div className="navbar-nav me-auto mb-2 mb-lg-0">
                 {paths.map((element) => {
-                  console.log(element);
                   return (
                     <NavBarItem
                       href={element["href"]}
